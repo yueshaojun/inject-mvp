@@ -131,7 +131,10 @@ public class MVPComponentParser {
                     parameterSpecs.add(paramBuilder.build());
 
                     injectBuilder.addStatement(
-                                    "BinderWrapper<Activity> wrapper = (BinderWrapper<Activity>) classBinderWrapperHashMap.get(instance.getClass());\n" +
+                                    "\nBinderWrapper<Activity> wrapper = (BinderWrapper<Activity>) classBinderWrapperHashMap.get(instance.getClass());\n" +
+                                            "if(wrapper == null){\n" +
+                                            "   return;\n"+
+                                            "}\n"+
                                     "wrapper.bindMember($N);",
                             param.getSimpleName().toString());
                 }
@@ -142,7 +145,10 @@ public class MVPComponentParser {
                     parameterSpecs.add(paramBuilder.build());
 
                     injectBuilder.addStatement(
-                            "BinderWrapper<Activity> wrapper = (BinderWrapper<Activity>) classBinderWrapperHashMap.get(instance.getClass());\n" +
+                            "\nBinderWrapper<Activity> wrapper = (BinderWrapper<Activity>) classBinderWrapperHashMap.get(instance.getClass());\n" +
+                                    "if(wrapper == null){\n" +
+                                    "   return;\n"+
+                                    "}\n"+
                             "wrapper.unbind($N);",
                             param.getSimpleName().toString());
                 }
