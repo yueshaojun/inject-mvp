@@ -18,7 +18,20 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     public void login() {
-        Log.i("MyModule",TAG+" http request ...");
         getView().onLoginSuccess();
+    }
+
+    @Override
+    public void attachView(ILoginView view) {
+        Log.i("MyModule",TAG+" attachView..."+getView().toString());
+        super.attachView(view);
+
+    }
+
+    @Override
+    public void detachView() {
+        Log.i("MyModule",TAG+" detachView ..."+getView().toString());
+        super.detachView();
+
     }
 }

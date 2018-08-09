@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.lib.Presenter;
+import com.example.lib.PresenterType;
 import com.example.yueshaojun.myapplication.BaseActivity;
 import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.P.PayPresenter;
@@ -20,11 +21,11 @@ public class ActivityPay extends BaseActivity implements ILoginView,IPayView{
     private final static String TAG = "ActivityPay_";
 
     @Inject
-    @Presenter
+    @Presenter(type = PresenterType.ACTIVITY)
     LoginPresenter loginPresenter;
 
     @Inject
-    @Presenter
+    @Presenter(type = PresenterType.ACTIVITY)
     PayPresenter payPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

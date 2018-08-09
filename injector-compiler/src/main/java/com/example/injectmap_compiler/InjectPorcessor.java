@@ -1,7 +1,8 @@
 package com.example.injectmap_compiler;
 
-import com.example.lib.MVPComponent;
 import com.example.lib.Presenter;
+import com.example.lib.MVPComponent;
+import com.example.lib.PresenterType;
 import com.google.auto.service.AutoService;
 
 import java.util.LinkedHashSet;
@@ -30,11 +31,14 @@ public class InjectPorcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
         System.out.println("Presenter processing ...");
 
-        PresenterParser.parse(roundEnvironment);
-        PresenterParser.createFile(elementUtil,filer);
+        Parser.parse(roundEnvironment);
+        WrapperCreator.createFile(elementUtil,filer);
 
-        MVPComponentParser.parse(roundEnvironment);
-        MVPComponentParser.createFile(elementUtil,filer);
+
+        BinderCreator.createFile(elementUtil,filer);
+        SupportCreator.createFile(elementUtil,filer, PresenterType.ACTIVITY);
+        SupportCreator.createFile(elementUtil,filer, PresenterType.FRAGMENT);
+
         return false;
     }
 

@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import com.dada.presenter.ActivitySupporter;
 
-import com.dada.presenter.PresentersBinder;
 
 /**
- * Created by yueshaojun on 2018/8/1.
+ * activity  基类
+ * @author yueshaojun
+ * @date 2018/8/1
  */
 
 public abstract class BaseActivity extends Activity {
@@ -23,14 +25,15 @@ public abstract class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
         // dagger 生成实例
         injectMethod();
+
         // 自动attach
-        PresentersBinder.create().inject(this);
+        ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
     }
     public abstract void injectMethod();
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        PresentersBinder.create().unbind(this);
+        ((ActivitySupporter)getApplication()).getActivitySupport().unbind(this);
     }
 }

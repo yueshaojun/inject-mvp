@@ -5,5 +5,8 @@ package com.example.yueshaojun.myapplication.V;
  */
 
 public interface IPayView extends BaseView {
+    /**
+     * 支付成功
+     */
     void paySuccess();
 }

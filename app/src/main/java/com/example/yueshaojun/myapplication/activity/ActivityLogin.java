@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.lib.Presenter;
+import com.example.lib.PresenterType;
 import com.example.yueshaojun.myapplication.BaseActivity;
 import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.R;
@@ -22,7 +23,7 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
 
     private static final String TAG = "ActivityLogin_";
     @Inject
-    @Presenter
+    @Presenter(type = PresenterType.ACTIVITY)
     protected LoginPresenter loginPresenter;
 
     @Override

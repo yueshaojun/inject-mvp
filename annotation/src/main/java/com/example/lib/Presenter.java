@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Documented
 public @interface Presenter {
-    String name() default "";
+    PresenterType type();
 }
