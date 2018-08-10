@@ -2,7 +2,6 @@ package com.example.yueshaojun.myapplication;
 
 import android.app.Activity;
 
-import com.dada.presenter.ActivityBinder;
 import com.dada.presenter.ActivitySupporter;
 import com.example.lib.AndroidBinder;
 
