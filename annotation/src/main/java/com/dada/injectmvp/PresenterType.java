@@ -1,4 +1,4 @@
-package com.example.lib;
+package com.dada.injectmvp;
 
 /**
  * presenter 类型

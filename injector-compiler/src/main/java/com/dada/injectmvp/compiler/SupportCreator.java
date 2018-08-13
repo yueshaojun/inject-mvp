@@ -1,8 +1,7 @@
-package com.example.injectmap_compiler;
+package com.dada.injectmvp.compiler;
 
-import com.example.lib.PresenterType;
+import com.dada.injectmvp.PresenterType;
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;

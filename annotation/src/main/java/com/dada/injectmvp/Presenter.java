@@ -1,4 +1,4 @@
-package com.example.lib;
+package com.dada.injectmvp;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

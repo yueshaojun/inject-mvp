@@ -1,8 +1,8 @@
-package com.example.injectmap_compiler;
+package com.dada.injectmvp.compiler;
 
-import com.example.lib.MVPComponent;
-import com.example.lib.Presenter;
-import com.example.lib.PresenterType;
+import com.dada.injectmvp.MVPComponent;
+import com.dada.injectmvp.Presenter;
+import com.dada.injectmvp.PresenterType;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,3 +1,2 @@
-include ':app', '' +
-        ':annotation',
-        ':injector-compiler'
+include ':app',
+        ':annotation', ':injector-compiler'

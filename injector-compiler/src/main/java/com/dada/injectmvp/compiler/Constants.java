@@ -1,4 +1,4 @@
-package com.example.injectmap_compiler;
+package com.dada.injectmvp.compiler;
 
 /**
  * 常量类
@@ -8,5 +8,5 @@ package com.example.injectmap_compiler;
 
 public interface Constants {
     String DEFAULT_PACKAGE_NAME = "com.dada.presenter";
-    String API_PACKAGE_NAME = "com.example.lib";
+    String API_PACKAGE_NAME = "com.dada.injectmvp";
 }

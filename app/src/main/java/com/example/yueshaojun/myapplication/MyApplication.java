@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.support.v4.app.Fragment;
 
+import com.dada.injectmvp.AndroidBinder;
 import com.dada.presenter.ActivityBinder;
 import com.dada.presenter.ActivitySupporter;
 import com.dada.presenter.FragmentBinder;
 import com.dada.presenter.FragmentSupporter;
-import com.example.lib.AndroidBinder;
 
 
 /**
@@ -21,6 +21,12 @@ public class MyApplication extends Application implements ActivitySupporter,Frag
     @Override
     public void onCreate() {
         super.onCreate();
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("exit。。。。");
+            }
+        }));
     }
 
     @Override

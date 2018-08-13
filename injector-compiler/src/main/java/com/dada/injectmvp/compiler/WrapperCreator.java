@@ -1,6 +1,6 @@
-package com.example.injectmap_compiler;
+package com.dada.injectmvp.compiler;
 
-import com.example.lib.BinderWrapper;
+import com.dada.injectmvp.BinderWrapper;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;

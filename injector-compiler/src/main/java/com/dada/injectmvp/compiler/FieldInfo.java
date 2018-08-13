@@ -1,4 +1,4 @@
-package com.example.injectmap_compiler;
+package com.dada.injectmvp.compiler;
 
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;

@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.lib.Presenter;
-import com.example.lib.PresenterType;
+import com.dada.injectmvp.Presenter;
+import com.dada.injectmvp.PresenterType;
 import com.example.yueshaojun.myapplication.BaseActivity;
 import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.P.PayPresenter;
