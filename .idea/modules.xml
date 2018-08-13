@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotation/annotation.iml" filepath="$PROJECT_DIR$/annotation/annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/injectmvp.iml" filepath="$PROJECT_DIR$/injectmvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/injector-compiler/injector-compiler.iml" filepath="$PROJECT_DIR$/injector-compiler/injector-compiler.iml" />
     </modules>
   </component>
