@@ -4,6 +4,7 @@ import com.dada.injectmvp.MVPComponent;
 import com.dada.injectmvp.Presenter;
 import com.dada.injectmvp.PresenterType;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +34,7 @@ class Parser {
         parseComponent(roundEnvironment);
     }
     private static void parsePresenter(RoundEnvironment roundEnvironment) {
+        System.out.println("parsePresenter starting...");
         Set<? extends Element> presenterElements = roundEnvironment.getElementsAnnotatedWith(Presenter.class);
         for (Element element : presenterElements) {
             ElementKind kind = element.getKind();
@@ -43,7 +45,7 @@ class Parser {
                 Presenter presenter = variableElement.getAnnotation(Presenter.class);
                 PresenterType presenterType = presenter.type();
                 TypeElement typeElement = (TypeElement) variableElement.getEnclosingElement();
-                System.out.println("typeElement superClass:"+typeElement.getSimpleName());
+
                 String currentClassName = typeElement.getSimpleName().toString();
                 List<FieldInfo> fieldInfoList = currentClassInjectInfoMap.get(currentClassName);
                 if (fieldInfoList == null) {
@@ -68,10 +70,11 @@ class Parser {
                 fieldInfoList.add(fieldInfo);
             }
         }
-
+        System.out.println("parsePresenter ending...");
     }
 
     private static void parseComponent(RoundEnvironment roundEnvironment) {
+        System.out.println("parseComponent starting...");
         Set<? extends Element> componentElements = roundEnvironment.getElementsAnnotatedWith(MVPComponent.class);
         for (Element element : componentElements) {
             ElementKind kind = element.getKind();
@@ -80,6 +83,7 @@ class Parser {
                 interfaceTypes.add((TypeElement) element);
             }
         }
+        System.out.println("parseComponent ending...");
     }
 
     static void clear(){
@@ -90,4 +94,5 @@ class Parser {
         currentFragmentClassTypeMap.clear();
         interfaceTypes.clear();
     }
+
 }

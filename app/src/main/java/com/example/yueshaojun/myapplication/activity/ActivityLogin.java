@@ -22,9 +22,6 @@ import javax.inject.Inject;
 public class ActivityLogin extends BaseActivity implements ILoginView {
 
     private static final String TAG = "ActivityLogin_";
-    @Inject
-    @Presenter(type = PresenterType.ACTIVITY)
-    protected LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,6 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
         findViewById(R.id.click).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginPresenter.login();
             }
         });
     }
@@ -72,6 +68,11 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
 
     @Override
     public void onLoginError(String errorMsg) {
+
+    }
+
+    @Override
+    public void paySuccess() {
 
     }
 }

@@ -25,6 +25,7 @@ import javax.lang.model.util.Elements;
 
 public class WrapperCreator {
     static void createFile(Elements elementUtil, Filer filer) {
+        System.out.println("WrapperCreator createFile starting");
         for (String classNameHasPresenter : Parser.currentClassInjectInfoMap.keySet()) {
             List<FieldInfo> fieldInfos = Parser.currentClassInjectInfoMap.get(classNameHasPresenter);
             TypeElement typeElementForClass = Parser.currentClassTypeMap.get(classNameHasPresenter);

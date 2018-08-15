@@ -26,6 +26,7 @@ import javax.lang.model.util.Elements;
 
 public class BinderCreator {
     public static void createFile(Elements elementUtil, Filer filer) {
+        System.out.println("BinderCreator createFile starting");
         createFile(elementUtil, filer, PresenterType.ACTIVITY);
         createFile(elementUtil, filer, PresenterType.FRAGMENT);
     }
@@ -35,6 +36,7 @@ public class BinderCreator {
         ClassName hashMap = ClassName.get("java.util", "HashMap");
         ClassName activity = ClassName.get("android.app", "Activity");
         ClassName fragment = ClassName.get("android.support.v4.app", "Fragment");
+        ClassName string = ClassName.get("java.lang","String");
 
         WildcardTypeName activityWildType = WildcardTypeName.subtypeOf(activity);
         WildcardTypeName fragmentWildType = WildcardTypeName.subtypeOf(fragment);
@@ -79,6 +81,7 @@ public class BinderCreator {
         if (type == PresenterType.ACTIVITY) {
             for (String classNameHasPresenter : Parser.currentActivityClassTypeMap.keySet()) {
                 System.out.println("activity TypeElement :" + classNameHasPresenter + " start");
+                System.out.println("activity TypeElement :" + classNameHasPresenter +"||"+ Parser.currentActivityClassTypeMap.get(classNameHasPresenter).getEnclosingElement().getSimpleName());
                 TypeName typeNameHasPresenter = TypeName.get(Parser.currentActivityClassTypeMap.get(classNameHasPresenter).asType());
                 ParameterizedTypeName bindWrapper = ParameterizedTypeName.get(ClassName.get(BinderWrapper.class), typeNameHasPresenter);
 
@@ -123,30 +126,42 @@ public class BinderCreator {
         MethodSpec.Builder bindMethodBuilder = MethodSpec.methodBuilder("bind");
         ParameterSpec.Builder paramBuilder = ParameterSpec
                 .builder(type == PresenterType.ACTIVITY ? activity : fragment, "instance");
-        bindMethodBuilder.addParameter(paramBuilder.build())
+
+        bindMethodBuilder
+                .addParameter(paramBuilder.build())
                 .addAnnotation(Override.class)
                 .addModifiers(Modifier.PUBLIC)
-                .addStatement("\nBinderWrapper<$T> wrapper = (BinderWrapper<$T>) classBinderWrapperHashMap.get(instance.getClass());\n" +
-                                "if(wrapper == null){\n" +
-                                "   return;\n" +
-                                "}\n" +
-                                "wrapper.bindMember($N);",
+                .addCode(
+                        "Class key = instance.getClass();\n"+
+                        "while(key != $N){\n" +
+                        "   BinderWrapper<$T> wrapper = (BinderWrapper<$T>) classBinderWrapperHashMap.get(key);\n" +
+                        "   if(wrapper != null){\n" +
+                        "       wrapper.bindMember(instance);\n" +
+                        "   }\n" +
+                        "   key = key.getSuperclass();\n"+
+                        "}",
+                        type == PresenterType.ACTIVITY ? "Activity.class":"Fragment.class",
                         type == PresenterType.ACTIVITY ? activity.box() : fragment.box(),
-                        type == PresenterType.ACTIVITY ? activity.box() : fragment.box(),
-                        "instance");
+                        type == PresenterType.ACTIVITY ? activity.box() : fragment.box());
 
-        MethodSpec.Builder unbindMethodBuilder = MethodSpec.methodBuilder("unbind")
+        MethodSpec.Builder unbindMethodBuilder = MethodSpec.methodBuilder("unbind");
+
+        unbindMethodBuilder
                 .addParameter(paramBuilder.build())
                 .addModifiers(Modifier.PUBLIC)
                 .addAnnotation(Override.class)
-                .addStatement("\nBinderWrapper<$T> wrapper = (BinderWrapper<$T>) classBinderWrapperHashMap.get(instance.getClass());\n" +
-                                "if(wrapper == null){\n" +
-                                "   return;\n" +
-                                "}\n" +
-                                "wrapper.unbind($N);",
+                .addCode(
+                        "Class key = instance.getClass();\n"+
+                        "while(key != $N){\n" +
+                        "BinderWrapper<$T> wrapper = (BinderWrapper<$T>) classBinderWrapperHashMap.get(key);\n" +
+                        "   if(wrapper != null){\n" +
+                        "        wrapper.unbind(instance);\n" +
+                        "    }\n" +
+                        "   key = key.getSuperclass();\n"+
+                        "}",
+                        type == PresenterType.ACTIVITY ? "Activity.class":"Fragment.class",
                         type == PresenterType.ACTIVITY ? activity.box() : fragment.box(),
-                        type == PresenterType.ACTIVITY ? activity.box() : fragment.box(),
-                        "instance");
+                        type == PresenterType.ACTIVITY ? activity.box() : fragment.box());
         typeSpecBuilder
                 .addMethod(constructorBuilder.build())
                 .addMethod(createBuilder.build())
