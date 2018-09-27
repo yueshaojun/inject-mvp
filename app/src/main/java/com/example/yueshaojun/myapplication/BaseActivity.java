@@ -22,10 +22,7 @@ import javax.inject.Inject;
  * @date 2018/8/1
  */
 
-public class BaseActivity extends Activity implements IPayView{
-    @Inject
-    @Presenter(type = PresenterType.ACTIVITY)
-    PayPresenter payPresenter;
+public class BaseActivity extends Activity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -43,7 +40,6 @@ public class BaseActivity extends Activity implements IPayView{
         // 自动attach
         ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
 
-        payPresenter.pay();
     }
     public  void injectMethod(){};
 
@@ -51,10 +47,5 @@ public class BaseActivity extends Activity implements IPayView{
     protected void onDestroy() {
         super.onDestroy();
         ((ActivitySupporter)getApplication()).getActivitySupport().unbind(this);
-    }
-
-    @Override
-    public void paySuccess() {
-
     }
 }

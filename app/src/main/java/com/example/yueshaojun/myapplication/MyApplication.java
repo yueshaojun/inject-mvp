@@ -21,12 +21,6 @@ public class MyApplication extends Application implements ActivitySupporter,Frag
     @Override
     public void onCreate() {
         super.onCreate();
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("exit。。。。");
-            }
-        }));
     }
 
     @Override
