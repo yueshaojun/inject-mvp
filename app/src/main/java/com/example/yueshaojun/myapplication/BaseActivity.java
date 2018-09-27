@@ -6,14 +6,8 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.dada.injectmvp.Presenter;
-import com.dada.injectmvp.PresenterType;
 import com.dada.presenter.ActivitySupporter;
-import com.example.yueshaojun.myapplication.P.PayPresenter;
-import com.example.yueshaojun.myapplication.V.IPayView;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
-
-import javax.inject.Inject;
 
 
 /**
@@ -41,7 +35,7 @@ public class BaseActivity extends Activity {
         ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
 
     }
-    public  void injectMethod(){};
+    public  void injectMethod(){}
 
     @Override
     protected void onDestroy() {

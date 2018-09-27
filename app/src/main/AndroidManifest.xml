@@ -34,6 +34,7 @@
                 android:name=".activity.ActivityNFC"
             android:launchMode="singleTop">
         </activity>
+        <activity android:name=".BaseActivity" />
     </application>
 
 </manifest>
