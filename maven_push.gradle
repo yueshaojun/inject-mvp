@@ -8,9 +8,9 @@ uploadArchives {
         mavenDeployer {
             // 自己本地maven库地址
             //      repository(url: new File(System.properties['user.home'], '.m2/repository').toURI().toURL())
-            repository(url: "http://nexus.corp.imdada.cn/content/repositories/snapshots") {
-                authentication(userName: "wuyiqun", password: "dada123456")
-            }
+//            repository(url: "http://nexus.corp.imdada.cn/content/repositories/snapshots") {
+//                authentication(userName: "wuyiqun", password: "dada123456")
+//            }
             //"file:~/.m2/repository")
             println POM_GROUP + ":" + POM_ARTIFACT_ID + ":" + POM_VERSION_NAME
             pom.version = POM_VERSION_NAME
