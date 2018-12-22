@@ -7,9 +7,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.yueshaojun.myapplication.BaseActivity;
+import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.R;
 import com.example.yueshaojun.myapplication.V.ILoginView;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
+import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.PresenterType;
+
+import javax.inject.Inject;
 
 /**
  * 例子：登陆页面
@@ -19,6 +24,9 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
 
     private static final String TAG = "ActivityLogin_";
 
+    @Inject
+    @Presenter(type = PresenterType.ACTIVITY)
+    LoginPresenter loginPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +34,7 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
         findViewById(R.id.click).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityLogin.this,ActivityPay.class));
+                loginPresenter.login();
             }
         });
     }
