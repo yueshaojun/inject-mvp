@@ -1,5 +1,5 @@
 apply plugin: 'java-library'
-apply from: '../maven_push.gradle'
+//apply from: '../maven_push.gradle'
 
 
 dependencies {
