@@ -10,5 +10,5 @@
         android:id="@+id/click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="click!"/>
+        android:text="登陆!"/>
 </android.support.constraint.ConstraintLayout>

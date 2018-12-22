@@ -1,4 +1,4 @@
-package com.dada.injectmvp.compiler;
+package com.yueshaojun.injectmvp.compiler;
 
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;

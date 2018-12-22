@@ -1,4 +1,4 @@
-package com.dada.injectmvp;
+package com.yueshaojun.injectmvp;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

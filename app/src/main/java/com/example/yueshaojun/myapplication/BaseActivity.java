@@ -6,8 +6,8 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.dada.presenter.ActivitySupporter;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
+import com.yueshaojun.presenter.ActivitySupporter;
 
 
 /**
@@ -25,14 +25,15 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        // 使用先实例对象
+        injectMethod();
         super.onCreate(savedInstanceState);
         Log.i("injectMvp",getClass().getName());
         // dagger 生成实例
-        injectMethod();
         DaggerMyComponent.create().inject(this);
 
-        // 自动attach
-        ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
+        // 用法1：自动attach
+//        ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
 
     }
     public  void injectMethod(){}
@@ -40,6 +41,7 @@ public class BaseActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ((ActivitySupporter)getApplication()).getActivitySupport().unbind(this);
+        // 用法1：自动detach
+//        ((ActivitySupporter)getApplication()).getActivitySupport().unbind(this);
     }
 }

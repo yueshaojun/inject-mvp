@@ -1,4 +1,4 @@
-package com.dada.injectmvp;
+package com.yueshaojun.injectmvp;
 
 /**
  * presenter 类型

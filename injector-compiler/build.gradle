@@ -6,7 +6,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.auto.service:auto-service:1.0-rc2'
     compile 'com.squareup:javapoet:1.7.0'
-    compile 'com.dada.injectmvp:annotation:0.0.1-SNAPSHOT'
+    compile project(':annotation')
 }
 
 sourceCompatibility = "1.7"

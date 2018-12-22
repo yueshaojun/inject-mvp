@@ -6,17 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.dada.injectmvp.Presenter;
-import com.dada.injectmvp.PresenterType;
 import com.example.yueshaojun.myapplication.BaseActivity;
-import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.R;
 import com.example.yueshaojun.myapplication.V.ILoginView;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
 
-import javax.inject.Inject;
-
 /**
+ * 例子：登陆页面
  * @author yueshaojun
  */
 public class ActivityLogin extends BaseActivity implements ILoginView {
@@ -30,6 +26,7 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
         findViewById(R.id.click).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(ActivityLogin.this,ActivityPay.class));
             }
         });
     }
@@ -68,11 +65,6 @@ public class ActivityLogin extends BaseActivity implements ILoginView {
 
     @Override
     public void onLoginError(String errorMsg) {
-
-    }
-
-    @Override
-    public void paySuccess() {
 
     }
 }

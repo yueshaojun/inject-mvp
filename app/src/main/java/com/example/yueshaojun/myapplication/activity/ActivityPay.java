@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dada.injectmvp.Presenter;
-import com.dada.injectmvp.PresenterType;
 import com.example.yueshaojun.myapplication.BaseActivity;
 import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.P.PayPresenter;
@@ -15,8 +13,13 @@ import com.example.yueshaojun.myapplication.V.IPayView;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
 
 import javax.inject.Inject;
+import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.PresenterType;
 
-
+/**
+ * 例子：支付之前要检查登陆，复用登陆模块。
+ * @author yueshaojun
+ */
 public class ActivityPay extends BaseActivity implements ILoginView,IPayView{
     private final static String TAG = "ActivityPay_";
 

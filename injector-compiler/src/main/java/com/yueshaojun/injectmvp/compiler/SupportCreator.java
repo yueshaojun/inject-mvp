@@ -1,11 +1,11 @@
-package com.dada.injectmvp.compiler;
+package com.yueshaojun.injectmvp.compiler;
 
-import com.dada.injectmvp.PresenterType;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
+import com.yueshaojun.injectmvp.PresenterType;
 
 import java.io.IOException;
 
