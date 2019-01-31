@@ -14,6 +14,7 @@ app/build.gradle添加依赖：
  LoginPresenter loginPresenter;
 ```
 使用@Presenter注解标记使用的presenter，type 指定为PresenterType.ACTIVITY（使用presnter的类是activity） 或者 PresenterType.FRAGMENT（使用presnter的类是fragment），目前只支持两种。
+
 3、Application 添加成员
 ```
  AndroidBinder<Activity> activityAndroidBinder = ActivityBinder.create();
