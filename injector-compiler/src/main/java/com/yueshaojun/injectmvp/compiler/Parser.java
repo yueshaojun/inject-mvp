@@ -62,7 +62,7 @@ class Parser {
 
                 System.out.println("typeElement :"+currentActivityClassTypeMap.size()+"||"+currentFragmentClassTypeMap.size());
 
-                //将元素信息放在一个list里，这个list是当前类下的
+                //put element to current class field info list
                 FieldInfo fieldInfo = new FieldInfo();
                 fieldInfo.setClassName(currentClassName);
                 fieldInfo.setVariableElement(variableElement);
@@ -86,7 +86,7 @@ class Parser {
     }
 
     static void clear(){
-        //清除静态的集合
+        //clear static var
         currentClassTypeMap.clear();
         currentClassInjectInfoMap.clear();
         currentActivityClassTypeMap.clear();

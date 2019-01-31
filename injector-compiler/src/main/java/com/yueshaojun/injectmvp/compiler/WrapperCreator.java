@@ -18,7 +18,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 
 /**
- * wrapper 类生成
+ * wrapper creator
  * @author yueshaojun
  * @date 2018/8/9
  */
@@ -80,7 +80,7 @@ public class WrapperCreator {
                 e.printStackTrace();
             }
         }
-
+        System.out.println("WrapperCreator createFile ending");
 
     }
 }

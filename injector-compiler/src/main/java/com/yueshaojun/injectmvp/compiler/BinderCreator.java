@@ -18,7 +18,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.util.Elements;
 
 /**
- * AndroidBinder 实现类生成
+ * AndroidBinder creator
  *
  * @author yueshaojun
  * @date 2018/8/9
@@ -29,6 +29,7 @@ public class BinderCreator {
         System.out.println("BinderCreator createFile starting");
         createFile(elementUtil, filer, PresenterType.ACTIVITY);
         createFile(elementUtil, filer, PresenterType.FRAGMENT);
+        System.out.println("BinderCreator createFile ending");
     }
 
     private static void createFile(Elements elementUtil, Filer filer, PresenterType type) {
@@ -76,18 +77,16 @@ public class BinderCreator {
                         addModifiers(Modifier.PRIVATE)
                         .addStatement("classBinderWrapperHashMap = new HashMap<>()");
 
-
         //activity
         if (type == PresenterType.ACTIVITY) {
             for (String classNameHasPresenter : Parser.currentActivityClassTypeMap.keySet()) {
-                System.out.println("activity TypeElement :" + classNameHasPresenter + " start");
-                System.out.println("activity TypeElement :" + classNameHasPresenter +"||"+ Parser.currentActivityClassTypeMap.get(classNameHasPresenter).getEnclosingElement().getSimpleName());
+                System.out.println("create activity TypeElement :" + classNameHasPresenter );
                 TypeName typeNameHasPresenter = TypeName.get(Parser.currentActivityClassTypeMap.get(classNameHasPresenter).asType());
                 ParameterizedTypeName bindWrapper = ParameterizedTypeName.get(ClassName.get(BinderWrapper.class), typeNameHasPresenter);
 
                 typeSpecBuilder.addField(bindWrapper, "bindWrapper_" + classNameHasPresenter, Modifier.PRIVATE);
 
-                //构造器里加语句
+                //add statement to constructor
                 constructorBuilder
                         .addStatement("bindWrapper_" + classNameHasPresenter + " = " + "new " +
                                 Parser.currentActivityClassTypeMap.get(classNameHasPresenter).getQualifiedName() +
@@ -100,13 +99,13 @@ public class BinderCreator {
         //fragment
         if (type == PresenterType.FRAGMENT) {
             for (String classNameHasPresenter : Parser.currentFragmentClassTypeMap.keySet()) {
-                System.out.println("fragmentTypeElement :" + classNameHasPresenter);
+                System.out.println("create fragmentTypeElement :" + classNameHasPresenter);
                 TypeName typeNameHasPresenter = TypeName.get(Parser.currentFragmentClassTypeMap.get(classNameHasPresenter).asType());
                 ParameterizedTypeName bindWrapper = ParameterizedTypeName.get(ClassName.get(BinderWrapper.class), typeNameHasPresenter);
 
                 typeSpecBuilder.addField(bindWrapper, "bindWrapper_" + classNameHasPresenter, Modifier.PRIVATE);
 
-                //构造器里加语句
+                //add statement to constructor
                 constructorBuilder
                         .addStatement("bindWrapper_" + classNameHasPresenter + " = "
                                 + "new " +
@@ -120,7 +119,7 @@ public class BinderCreator {
 
         MethodSpec.Builder createBuilder = MethodSpec.methodBuilder("create")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                .returns(ClassName.get(Constants.DEFAULT_PACKAGE_NAME, type == PresenterType.ACTIVITY ? "ActivityBinder" : "FragmentBinder"))
+                .returns(ClassName.get(GlobleParam.PACKAGE_NAME, type == PresenterType.ACTIVITY ? "ActivityBinder" : "FragmentBinder"))
                 .addStatement("return " + (type == PresenterType.ACTIVITY ? "new ActivityBinder()" : "new FragmentBinder()"));
 
         MethodSpec.Builder bindMethodBuilder = MethodSpec.methodBuilder("bind");
@@ -168,7 +167,7 @@ public class BinderCreator {
                 .addMethod(bindMethodBuilder.build())
                 .addMethod(unbindMethodBuilder.build());
 
-        String packageName = Constants.DEFAULT_PACKAGE_NAME;
+        String packageName = GlobleParam.PACKAGE_NAME;
         try {
             JavaFile.builder(packageName, typeSpecBuilder.build()).build().writeTo(filer);
         } catch (IOException e) {

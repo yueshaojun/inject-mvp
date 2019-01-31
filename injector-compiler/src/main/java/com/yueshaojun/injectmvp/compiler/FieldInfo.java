@@ -4,18 +4,18 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 
 /**
- * intent 字段注入信息类
+ * the {@link Presenter} annotation mark
  * @author yueshaojun988
  * @date 2017/12/28
  */
 
 public class FieldInfo {
     /**
-     * 所在的类名
+     * class name the field belongs to
      */
     private String className;
     /**
-     * 字段
+     * field
      */
     private VariableElement variableElement;
     private String fieldName;

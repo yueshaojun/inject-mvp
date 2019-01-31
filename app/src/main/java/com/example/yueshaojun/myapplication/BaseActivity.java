@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
-import com.yueshaojun.presenter.ActivitySupporter;
 
 
 /**

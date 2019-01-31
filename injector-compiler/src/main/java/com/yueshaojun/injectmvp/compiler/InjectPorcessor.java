@@ -3,8 +3,11 @@ package com.yueshaojun.injectmvp.compiler;
 import com.google.auto.service.AutoService;
 import com.yueshaojun.injectmvp.MVPComponent;
 import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.utils.StringUtil;
 
+import java.io.FileDescriptor;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -31,12 +34,13 @@ public class InjectPorcessor extends AbstractProcessor {
     Elements elementUtil;
     Messager messager;
     Types types;
+
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
         try {
             return processImpl(set, roundEnvironment);
-        }catch (Exception e){
-            messager.printMessage(Diagnostic.Kind.ERROR,e.getMessage());
+        } catch (Exception e) {
+            messager.printMessage(Diagnostic.Kind.ERROR, e.getMessage());
         }
         return true;
     }
@@ -44,11 +48,28 @@ public class InjectPorcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-        System.out.println("[INJECT init]");
         filer = processingEnvironment.getFiler();
         types = processingEnvironment.getTypeUtils();
         messager = processingEnvironment.getMessager();
         elementUtil = processingEnvironment.getElementUtils();
+        initParam(processingEnvironment);
+    }
+
+    private void initParam(ProcessingEnvironment processingEnvironment) {
+        Map<String, String> param = processingEnvironment.getOptions();
+        if (param == null || param.isEmpty() || ((GlobleParam.MODULE_NAME = param.get(Constants.MODULE_NAME)) == null)) {
+            messager.printMessage(Diagnostic.Kind.WARNING, "please add arguments in your build.gradle like this:" +
+                    "defaultConfig {\n" +
+                    "        javaCompileOptions {\n" +
+                    "            annotationProcessorOptions {\n" +
+                    "                arguments = [ moduleName : project.getName() ]\n" +
+                    "            }\n" +
+                    "        }\n" +
+                    "    }");
+        }
+        if(StringUtil.isEmpty(GlobleParam.PACKAGE_NAME)){
+            GlobleParam.PACKAGE_NAME =Constants.DEFAULT_PACKAGE_NAME;
+        }
     }
 
     @Override
@@ -59,17 +80,17 @@ public class InjectPorcessor extends AbstractProcessor {
         return types;
     }
 
-    private boolean processImpl(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment){
-        if(roundEnvironment.processingOver()){
-            System.out.println("[INJECT OVER]");
-            return true;
-        }else {
-            System.out.println("[INJECT START]");
-            Parser.parse(roundEnvironment);
-            WrapperCreator.createFile(elementUtil,filer);
-            BinderCreator.createFile(elementUtil,filer);
-            SupportCreator.createFile(elementUtil,filer);
+    private boolean processImpl(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
+        if (roundEnvironment.processingOver()) {
+            System.out.println("->>>"+GlobleParam.MODULE_NAME+"_[INJECT OVER]<<<-");
+            WrapperCreator.createFile(elementUtil, filer);
+            BinderCreator.createFile(elementUtil, filer);
+            SupportCreator.createFile(elementUtil, filer);
             Parser.clear();
+            return false;
+        } else {
+            System.out.println("->>>"+GlobleParam.MODULE_NAME+"_[INJECT START]<<<-");
+            Parser.parse(roundEnvironment);
         }
         return false;
     }

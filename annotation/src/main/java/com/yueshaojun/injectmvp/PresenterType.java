@@ -1,7 +1,7 @@
 package com.yueshaojun.injectmvp;
 
 /**
- * presenter 类型
+ * presenter type
  * @author yueshaojun
  * @date 2018/8/9
  */
