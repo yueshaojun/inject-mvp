@@ -5,8 +5,8 @@ inject mvp
 1、添加依赖
 app/build.gradle添加依赖：
 ```
- annotationProcessor project(':injector-compiler')
- compile project(':annotation')
+annotationProcessor project(':inject-mvp-compiler')
+implementation project(':inject-mvp-api')
 ```
 2、使用presenter的类添加注解
 ```
