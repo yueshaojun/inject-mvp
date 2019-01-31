@@ -35,7 +35,7 @@ public class BaseActivity extends Activity {
 //        ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
 
     }
-    public  void injectMethod(){}
+    public void injectMethod(){}
 
     @Override
     protected void onDestroy() {

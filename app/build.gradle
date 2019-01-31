@@ -38,13 +38,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.google.dagger:dagger:2.7'
+    implementation 'com.google.dagger:dagger:2.7'
 
     annotationProcessor 'com.google.dagger:dagger-compiler:2.7'
 
-    compile 'com.alibaba:arouter-api:1.3.1'
+    implementation 'com.alibaba:arouter-api:1.3.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 
-    annotationProcessor project(':injector-compiler')
-    compile project(':annotation')
+    annotationProcessor project(':inject-mvp-compiler')
+    implementation project(':inject-mvp-api')
 }

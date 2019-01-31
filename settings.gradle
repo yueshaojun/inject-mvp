@@ -1,2 +1,2 @@
 include ':app',
-        ':annotation', ':injector-compiler'
+        ':inject-mvp-api', ':inject-mvp-compiler'
