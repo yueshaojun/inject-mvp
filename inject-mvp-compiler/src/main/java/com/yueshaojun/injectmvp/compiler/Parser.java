@@ -1,7 +1,7 @@
 package com.yueshaojun.injectmvp.compiler;
 
-import com.yueshaojun.injectmvp.MVPComponent;
-import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.annotation.MVPComponent;
+import com.yueshaojun.injectmvp.annotation.Presenter;
 import com.yueshaojun.injectmvp.PresenterType;
 
 import java.util.ArrayList;

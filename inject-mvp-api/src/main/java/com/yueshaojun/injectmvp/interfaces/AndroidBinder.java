@@ -1,4 +1,4 @@
-package com.yueshaojun.injectmvp;
+package com.yueshaojun.injectmvp.interfaces;
 
 
 

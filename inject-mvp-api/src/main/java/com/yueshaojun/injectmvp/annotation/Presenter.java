@@ -1,4 +1,6 @@
-package com.yueshaojun.injectmvp;
+package com.yueshaojun.injectmvp.annotation;
+
+import com.yueshaojun.injectmvp.PresenterType;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

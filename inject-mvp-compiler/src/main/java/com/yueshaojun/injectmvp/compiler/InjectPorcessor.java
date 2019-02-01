@@ -1,11 +1,15 @@
 package com.yueshaojun.injectmvp.compiler;
 
 import com.google.auto.service.AutoService;
-import com.yueshaojun.injectmvp.MVPComponent;
-import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.annotation.MVPComponent;
+import com.yueshaojun.injectmvp.annotation.Presenter;
+import com.yueshaojun.injectmvp.compiler.constant.Constants;
+import com.yueshaojun.injectmvp.compiler.creator.BinderCreator;
+import com.yueshaojun.injectmvp.compiler.creator.SupportCreator;
+import com.yueshaojun.injectmvp.compiler.creator.WrapperCreator;
+import com.yueshaojun.injectmvp.utils.CollectionUtil;
 import com.yueshaojun.injectmvp.utils.StringUtil;
 
-import java.io.FileDescriptor;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -81,17 +85,17 @@ public class InjectPorcessor extends AbstractProcessor {
     }
 
     private boolean processImpl(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        if (roundEnvironment.processingOver()) {
-            System.out.println("->>>"+GlobleParam.MODULE_NAME+"_[INJECT OVER]<<<-");
-            WrapperCreator.createFile(elementUtil, filer);
-            BinderCreator.createFile(elementUtil, filer);
-            SupportCreator.createFile(elementUtil, filer);
-            Parser.clear();
+        // must deal with this action ,or wile create duplicated
+        if(CollectionUtil.isEmpty(set)){
             return false;
-        } else {
-            System.out.println("->>>"+GlobleParam.MODULE_NAME+"_[INJECT START]<<<-");
-            Parser.parse(roundEnvironment);
         }
-        return false;
+        System.out.println("->>>"+GlobleParam.MODULE_NAME+"_[INJECT START]<<<-");
+        Parser.parse(roundEnvironment);
+        WrapperCreator.createFile(elementUtil, filer);
+        BinderCreator.createFile(elementUtil, filer);
+        SupportCreator.createFile(elementUtil, filer);
+        Parser.clear();
+        System.out.println("->>>"+GlobleParam.MODULE_NAME+"_[INJECT OVER]<<<-");
+        return true;
     }
 }

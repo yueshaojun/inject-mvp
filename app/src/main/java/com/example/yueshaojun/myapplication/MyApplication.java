@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 
 import com.yueshaojun.injectmvp.ActivityBinder;
 import com.yueshaojun.injectmvp.ActivitySupporter;
-import com.yueshaojun.injectmvp.AndroidBinder;
+import com.yueshaojun.injectmvp.interfaces.AndroidBinder;
 import com.yueshaojun.injectmvp.FragmentBinder;
 import com.yueshaojun.injectmvp.FragmentSupporter;
 

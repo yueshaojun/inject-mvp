@@ -11,7 +11,7 @@ import com.example.yueshaojun.myapplication.P.LoginPresenter;
 import com.example.yueshaojun.myapplication.R;
 import com.example.yueshaojun.myapplication.V.ILoginView;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
-import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.annotation.Presenter;
 import com.yueshaojun.injectmvp.PresenterType;
 
 import javax.inject.Inject;

@@ -1,4 +1,4 @@
-package com.yueshaojun.injectmvp.compiler;
+package com.yueshaojun.injectmvp.compiler.constant;
 
 /**
  * Constant

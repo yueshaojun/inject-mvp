@@ -1,4 +1,4 @@
-package com.yueshaojun.injectmvp.compiler;
+package com.yueshaojun.injectmvp.compiler.creator;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
@@ -8,7 +8,10 @@ import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.WildcardTypeName;
-import com.yueshaojun.injectmvp.BinderWrapper;
+import com.yueshaojun.injectmvp.compiler.constant.Constants;
+import com.yueshaojun.injectmvp.compiler.GlobleParam;
+import com.yueshaojun.injectmvp.compiler.Parser;
+import com.yueshaojun.injectmvp.interfaces.BinderWrapper;
 import com.yueshaojun.injectmvp.PresenterType;
 
 import java.io.IOException;

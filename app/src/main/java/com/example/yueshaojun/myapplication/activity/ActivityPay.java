@@ -13,7 +13,7 @@ import com.example.yueshaojun.myapplication.V.IPayView;
 import com.example.yueshaojun.myapplication.di.DaggerMyComponent;
 
 import javax.inject.Inject;
-import com.yueshaojun.injectmvp.Presenter;
+import com.yueshaojun.injectmvp.annotation.Presenter;
 import com.yueshaojun.injectmvp.PresenterType;
 
 /**
