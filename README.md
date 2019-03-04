@@ -1,4 +1,5 @@
 # inject-mvp
+博客地址：https://blog.csdn.net/y1962475006/article/details/82822926
 inject mvp
 ## 用来解决mvp模式中presenter无法复用的问题
 ### 使用示例：
@@ -33,10 +34,12 @@ public AndroidBinder<Fragment> getFragmentSupport() {
 }
 ```
 4、以下二选一
+
 i、在Activity或者Fragment的基类中：对应的生命周期添加
 ((ActivitySupporter)getApplication()).getActivitySupport().bind(this);
 或
 ((ActivitySupporter)getApplication()).getActivitySupport().unbind(this);
+
 ii、在Application中注册生命周期：
 ```
 registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
