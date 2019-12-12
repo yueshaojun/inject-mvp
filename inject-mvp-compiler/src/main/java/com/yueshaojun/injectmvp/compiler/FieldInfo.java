@@ -4,7 +4,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 
 /**
- * the {@link Presenter} annotation mark
+ * the {@link com.yueshaojun.injectmvp.annotation.Presenter} annotation mark
  * @author yueshaojun988
  * @date 2017/12/28
  */

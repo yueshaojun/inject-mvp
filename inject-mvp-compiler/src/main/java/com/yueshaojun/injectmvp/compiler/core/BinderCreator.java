@@ -1,4 +1,4 @@
-package com.yueshaojun.injectmvp.compiler.creator;
+package com.yueshaojun.injectmvp.compiler.core;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
@@ -10,7 +10,6 @@ import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.WildcardTypeName;
 import com.yueshaojun.injectmvp.compiler.constant.Constants;
 import com.yueshaojun.injectmvp.compiler.GlobleParam;
-import com.yueshaojun.injectmvp.compiler.Parser;
 import com.yueshaojun.injectmvp.interfaces.BinderWrapper;
 import com.yueshaojun.injectmvp.PresenterType;
 
@@ -46,7 +45,7 @@ public class BinderCreator {
         WildcardTypeName fragmentWildType = WildcardTypeName.subtypeOf(fragment);
 
         ClassName className = ClassName.get("java.lang", "Class");
-        ClassName bindWrapperClassName = ClassName.get(Constants.API_PACKAGE_NAME, "BinderWrapper");
+        ClassName bindWrapperClassName = ClassName.get(Constants.INTERFACE_PACKAGE_NAME, "BinderWrapper");
 
         ParameterizedTypeName key = null;
         ParameterizedTypeName value = null;
@@ -60,7 +59,7 @@ public class BinderCreator {
         }
 
         ParameterizedTypeName bindWrapperMap = ParameterizedTypeName.get(hashMap, key, value);
-        ClassName interfaceClassName = ClassName.get(Constants.API_PACKAGE_NAME, "AndroidBinder");
+        ClassName interfaceClassName = ClassName.get(Constants.INTERFACE_PACKAGE_NAME, "AndroidBinder");
 
         ParameterizedTypeName defaultInterfaceTypeName = null;
         if (type == PresenterType.ACTIVITY) {

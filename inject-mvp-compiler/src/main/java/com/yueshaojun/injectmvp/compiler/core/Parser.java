@@ -1,8 +1,9 @@
-package com.yueshaojun.injectmvp.compiler;
+package com.yueshaojun.injectmvp.compiler.core;
 
 import com.yueshaojun.injectmvp.annotation.MVPComponent;
 import com.yueshaojun.injectmvp.annotation.Presenter;
 import com.yueshaojun.injectmvp.PresenterType;
+import com.yueshaojun.injectmvp.compiler.FieldInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

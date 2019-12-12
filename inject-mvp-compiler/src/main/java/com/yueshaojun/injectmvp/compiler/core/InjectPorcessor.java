@@ -1,12 +1,10 @@
-package com.yueshaojun.injectmvp.compiler;
+package com.yueshaojun.injectmvp.compiler.core;
 
 import com.google.auto.service.AutoService;
 import com.yueshaojun.injectmvp.annotation.MVPComponent;
 import com.yueshaojun.injectmvp.annotation.Presenter;
+import com.yueshaojun.injectmvp.compiler.GlobleParam;
 import com.yueshaojun.injectmvp.compiler.constant.Constants;
-import com.yueshaojun.injectmvp.compiler.creator.BinderCreator;
-import com.yueshaojun.injectmvp.compiler.creator.SupportCreator;
-import com.yueshaojun.injectmvp.compiler.creator.WrapperCreator;
 import com.yueshaojun.injectmvp.utils.CollectionUtil;
 import com.yueshaojun.injectmvp.utils.StringUtil;
 

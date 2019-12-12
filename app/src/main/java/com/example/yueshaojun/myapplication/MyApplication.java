@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment;
 
 import com.yueshaojun.injectmvp.ActivityBinder;
 import com.yueshaojun.injectmvp.ActivitySupporter;
-import com.yueshaojun.injectmvp.interfaces.AndroidBinder;
 import com.yueshaojun.injectmvp.FragmentBinder;
 import com.yueshaojun.injectmvp.FragmentSupporter;
+import com.yueshaojun.injectmvp.interfaces.AndroidBinder;
 
 
 /**
@@ -17,7 +17,7 @@ import com.yueshaojun.injectmvp.FragmentSupporter;
  */
 
 public class MyApplication extends Application
-        implements ActivitySupporter,FragmentSupporter {
+        implements ActivitySupporter, FragmentSupporter {
     AndroidBinder<Activity> activityAndroidBinder = ActivityBinder.create();
     AndroidBinder<Fragment> fragmentAndroidBinder = FragmentBinder.create();
     @Override

@@ -1,4 +1,4 @@
-package com.yueshaojun.injectmvp.compiler.creator;
+package com.yueshaojun.injectmvp.compiler.core;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
@@ -34,7 +34,7 @@ public class SupportCreator {
 
         ClassName activity = ClassName.get("android.app", "Activity");
         ClassName fragment = ClassName.get("android.support.v4.app", "Fragment");
-        ClassName interfaceClassName = ClassName.get(Constants.API_PACKAGE_NAME, "AndroidBinder");
+        ClassName interfaceClassName = ClassName.get(Constants.INTERFACE_PACKAGE_NAME, "AndroidBinder");
         ParameterizedTypeName returnTypeName =
                 ParameterizedTypeName.get(interfaceClassName, type == PresenterType.ACTIVITY ? activity : fragment);
 
